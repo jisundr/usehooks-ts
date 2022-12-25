@@ -18,10 +18,12 @@ function useLockedBody(
 
     // Save initial body style
     const originalOverflow = document.body.style.overflow
+    const originalPosition = document.body.style.position
     const originalPaddingRight = document.body.style.paddingRight
 
     // Lock body scroll
     document.body.style.overflow = 'hidden'
+    document.body.style.position = 'fixed'
 
     // Get the scrollBar width
     const root = document.getElementById(rootId) // or root
@@ -34,6 +36,7 @@ function useLockedBody(
 
     return () => {
       document.body.style.overflow = originalOverflow
+      document.body.style.position = originalPosition
 
       if (scrollBarWidth) {
         document.body.style.paddingRight = originalPaddingRight
